@@ -119,7 +119,8 @@ if ( ! isset($get->scale) OR (isset($get->scale) AND ! in_array($get->scale, $al
 
 // http vars
 $code = isset($get->code) ? urlencode(trim($get->code)) : '1234567890';
-if (get_magic_quotes_gpc())
+// https://stackoverflow.com/questions/65634680/get-magic-quotes-gpc-returns-undefined-in-my-code#comment116045769_65634748
+if (function_exists("get_magic_quotes_gpc") && get_magic_quotes_gpc())
   $code=stripslashes($code);
 
 $encoding = isset($get->encoding) ? trim($get->encoding) : 'code128';

@@ -32,7 +32,8 @@ if (!defined('INDEX_AUTH')) {
 @ini_set('magic_quotes_runtime', false);
 @ini_set('magic_quotes_sybase', false);
 // force disabling magic quotes
-if (get_magic_quotes_gpc()) {
+// https://stackoverflow.com/questions/65634680/get-magic-quotes-gpc-returns-undefined-in-my-code#comment116045769_65634748
+if (function_exists("get_magic_quotes_gpc") && get_magic_quotes_gpc()) {
   function stripslashes_deep($value)
   {
     $value = is_array($value)?array_map('stripslashes_deep', $value):stripslashes($value);
