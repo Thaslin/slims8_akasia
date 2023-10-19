@@ -593,6 +593,9 @@ if (extension_loaded('mysqli')) {
 /* Force UTF-8 for MySQL connection */
 $dbs->query('SET NAMES \'utf8\'');
 
+/* Use old sql_mode for MySQL connection (active prior to MySQL 8.0.33 migration) */
+$dbs->query('SET SESSION sql_mode = \'ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION\'');
+
 // load global settings from database. Uncomment below lines if you dont want to load it
 utility::loadSettings($dbs);
 
