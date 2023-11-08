@@ -115,7 +115,7 @@ if (isset($_POST['saveData'])) {
             } else {
                 $groups = 'literal{NULL}';
             }
-            $data['groups'] = trim($groups);
+            $data['`groups`'] = trim($groups);
         }
         if (($passwd1 AND $passwd2) AND ($passwd1 === $passwd2)) {
             $data['passwd'] = password_hash($passwd2, PASSWORD_BCRYPT);
